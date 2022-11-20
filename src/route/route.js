@@ -17,12 +17,12 @@ router.get("/blogs", authMW.authenticate, blogController.getFilteredBlog) // get
 
 router.put("/blogs/:blogId", authMW.authenticate, authMW.authorise, blogController.putBlog) // update data
 
-router.delete("/blogs/:blogId", authMW.authenticate,authMW.authorise, blogController.deleteBlogById) //delete by path params
+router.delete("/blogs/:blogId", authMW.authenticate, authMW.authorise, blogController.deleteBlogById) //delete by path params
 
 router.delete("/blogs", authMW.authenticate, blogController.DeleteBlog) //delete by query params
 
-router.all("/*", function(req, res){
-    return res.status(400).send({status: false, msg: "Path not found" })
+router.all("/*", function (req, res) {
+    return res.status(400).send({ status: false, msg: "Path not found" })
 })
 
 

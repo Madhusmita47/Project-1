@@ -105,11 +105,11 @@ const DeleteBlog = async function (req, res) {
     try {
         let queryParams = req.query
         if (!req.query.authorId){return res.status(400).send({status:false, msg:"AuthorId is mandotary in Query params "})}
-        let token = req.headers["x-api-key"];
-        let decodedToken = jwt.verify(token, "room-2-secret-key");
-        if (decodedToken.authorId.toString() != queryParams.authorId) {
-            return res.status(403).send({ message: "You are not Authorised" })
-        }
+       //let token = req.headers["x-api-key"];
+        // let decodedToken = jwt.verify(token, "room-2-secret-key");
+        // if (decodedToken.authorId.toString() != queryParams.authorId) {
+        //     return res.status(403).send({ message: "You are not Authorised" })
+        // }
         
 
         let perfectDate = new Date()
@@ -118,7 +118,7 @@ const DeleteBlog = async function (req, res) {
            return res.status(404).send({ msg: "document doesnt exist" })
         }
         else {
-           return res.status(200).send()
+           return res.status(200).send({status:false,msg:"successfully deleted"})
         }
 
     } catch (err) {
